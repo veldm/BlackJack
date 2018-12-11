@@ -18,7 +18,7 @@ namespace BlackJack
 
         /// <summary>
         /// Последовательность шагов для каждого из вариантов
-        /// H - "hit", S - "stay"
+        /// (H - "hit", S - "stay")
         /// </summary>
         static private List<string> WayToReward = new List<string>();
 
@@ -61,8 +61,7 @@ namespace BlackJack
             P_Hand = new Chunk();
             D_Hand = new Chunk();
             Console.WriteLine("Введите количество колод");
-            int k;
-            if (!int.TryParse(Console.ReadLine(), out k))
+            if (!int.TryParse(Console.ReadLine(), out int k))
             {
                 Console.WriteLine("Неверно задано количество колод" + (char)13);
                 GetMaxReward();

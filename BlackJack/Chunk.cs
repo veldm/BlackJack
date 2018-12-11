@@ -55,9 +55,9 @@ namespace BlackJack
         }
 
         /// <summary>
-        /// Строковое представление колоды как набора карт
+        /// Возвращает строковое представление колоды как набора карт
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Строковое представление колоды как набора карт</returns>
         public override string ToString()
         {
             string Result = "";
@@ -96,8 +96,8 @@ namespace BlackJack
         /// Вытаскивание карты с заданным номером из колоды 
         /// (из колоды карта удаляется)
         /// </summary>
-        /// <param name="index"></param>
-        /// <returns></returns>
+        /// <param name="index">Номер вытаскиваемой карты</param>
+        /// <returns>Вытащенная карта</returns>
         public Card Pull(int index)
         {
             Card C = Cards[index];

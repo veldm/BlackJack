@@ -8,6 +8,10 @@ namespace BlackJack
 {
     class Program
     {
+        /// <summary>
+        /// Точка входа - меню и вывод результатов
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
 

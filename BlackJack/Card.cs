@@ -34,10 +34,11 @@ namespace BlackJack
         }
 
         /// <summary>
-        /// Конструктор с параметрами (Масть и номинал)
+        /// Конструктор с параметрами (масть и номинал)
         /// </summary>
-        /// <param name="Number"></param>
-        /// <param name="Suit"></param>
+        /// <param name="Number">Кодировка номинала</param>
+        /// <param name="Suit">Масть (0 - ♠, 1 - ♣,
+        /// 2 - ♥, 3 - ♦)</param>
         public Card(int Number, int Suit)
         {
             this.Suit = Suit;
