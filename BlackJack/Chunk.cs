@@ -120,5 +120,31 @@ namespace BlackJack
             }
             return Result;
         }
+
+        /// <summary>
+        /// Преобразует строковое представление колоды в эквивалентный
+        /// ему объект класса Chunk
+        /// </summary>
+        /// <param name="S">Входная строка</param>
+        /// <returns>Эквивалентный входной строке объект класса Chunk</returns>
+        static public Chunk Parse(string S)
+        {
+            string[] MS = S.Split(' ');
+            Chunk Result = new Chunk();
+            for (int i = 0; i < MS.Length; i++)
+            {
+                Card C;
+                try
+                {
+                    C = Card.Parse(MS[i]);
+                }
+                catch
+                {
+                    throw new Exception("Не удалось преобразовать строку");
+                }
+                Result.Add(C);
+            }
+            return Result;
+        }
     }
 }

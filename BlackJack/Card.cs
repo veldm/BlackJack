@@ -46,6 +46,11 @@ namespace BlackJack
         }
 
         /// <summary>
+        /// Базовый конструктор без параметров
+        /// </summary>
+        public Card() { }
+
+        /// <summary>
         /// Возвращает строковое представление карты
         /// </summary>
         /// <returns>Строковое представление карты</returns>
@@ -84,6 +89,56 @@ namespace BlackJack
                     break;
             }
             return S;
+        }
+
+        /// <summary>
+        /// Преобразует строковое представление карты в эквивалентный
+        /// ему объект класса Card
+        /// </summary>
+        /// <param name="MS">Входная строка</param>
+        /// <returns>Эквивалентный входной строке объект класса Card</returns>
+        static public Card Parse(string MS)
+        {
+            int suit = 10;
+            switch (MS.Substring(MS.Length - 1))
+            {
+                case "♠":
+                    suit = 0;
+                    break;
+                case "♣":
+                    suit = 1;
+                    break;
+                case "♥":
+                    suit = 2;
+                    break;
+                case "♦":
+                    suit = 3;
+                    break;
+                default:
+                    throw new Exception("Неправильно задана масть карты");
+            }
+            Card C = new Card();
+            if (int.TryParse(MS.Substring(0, 2), out int p))
+                C = new Card(p, suit);
+            else if (int.TryParse(MS[0].ToString(), out int h))
+                C = new Card(h, suit);
+            else if (char.IsUpper(MS[0])) switch (MS[0])
+                {
+                    case 'A':
+                        C = new Card(11, suit);
+                        break;
+                    case 'J':
+                        C = new Card(12, suit);
+                        break;
+                    case 'Q':
+                        C = new Card(13, suit);
+                        break;
+                    case 'K':
+                        C = new Card(14, suit);
+                        break;
+                }
+            else throw new Exception("Неправильно задан номинал карты");
+            return C;
         }
     }
 }

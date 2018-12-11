@@ -41,12 +41,30 @@ namespace BlackJack
         /// Вывод максимально возможной итоговой награды
         /// на псевдослучайно сформированной колоде
         /// </summary>
-        /// <returns>Итоговая награда</returns>
-        static public double GetMaxReward()
+        /// <param name="Way">Итоговый путь к максимальной награде</param>
+        /// <returns>Максимальная итоговая награда</returns>
+        static public double GetMaxReward(out string Way)
         {
             RunUp();
             Play(PlayingDeck, false, false, 0, "");
-            return Reward.Max();
+            Double Result = Reward.Max();
+            Way = WayToReward[Reward.IndexOf(Result)];
+            return Result;
+        }
+
+        /// <summary>
+        /// Метод для тестирования расчёта максимальной награды
+        /// на небольших колодах с известным результатом
+        /// </summary>
+        /// <param name="TestDeck">Тествая колода</param>
+        /// <param name="Way">Итоговый путь к максимальной награде</param>
+        /// <returns>Максимальная итоговая награда</returns>
+        static public Double Testing(Chunk TestDeck, out string Way)
+        {
+            Play(TestDeck, false, false, 0, "");
+            Double Result = Reward.Max();
+            Way = WayToReward[Reward.IndexOf(Result)];
+            return Result;
         }
 
         /// <summary>
@@ -60,22 +78,26 @@ namespace BlackJack
             PlayingDeck = new Chunk();
             P_Hand = new Chunk();
             D_Hand = new Chunk();
-            Console.WriteLine("Введите количество колод");
-            if (!int.TryParse(Console.ReadLine(), out int k))
+            Console.WriteLine("Введите количество карт");
+            if (!int.TryParse(Console.ReadLine(), out int K))
             {
-                Console.WriteLine("Неверно задано количество колод" + (char)13);
-                GetMaxReward();
+                Console.WriteLine("Неверно задано количество карт" + (char)13);
+                GetMaxReward(out string Way);
             }
+            int k = K / 52;
+            if (K % 52 > 0) k++;
             Random R = new Random(DateTime.Now.Millisecond);
             for (int i = 0; i < k; i++)
             {
                 Chunk Deck = Chunk.Deck;
-                for (int j = 0; j < 52; j++)
+                for (int j = 0; j < 52 && PlayingDeck.Cards.Count < K; j++)
                 {
                     int f = R.Next(0, Deck.Cards.Count);
                     PlayingDeck.Add(Deck.Pull(f));
                 }
             }
+            if (PlayingDeck.Cards.Count <= 25)
+                Console.WriteLine(PlayingDeck.ToString());
             P_Hand.Add(PlayingDeck.Pull(0));
             P_Hand.Add(PlayingDeck.Pull(0));
             D_Hand.Add(PlayingDeck.Pull(0));

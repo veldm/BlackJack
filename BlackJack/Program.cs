@@ -33,7 +33,8 @@ namespace BlackJack
                         break;
                     case "2":
                         Console.WriteLine("Максимальная нагарда = "
-                            + MaxReward.GetMaxReward().ToString());
+                            + MaxReward.GetMaxReward(out string Way).ToString());
+                        Console.WriteLine(Way);
                         break;
                 }
                 Console.WriteLine();
