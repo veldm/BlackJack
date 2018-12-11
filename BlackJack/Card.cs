@@ -9,7 +9,7 @@ namespace BlackJack
     /// <summary>
     /// Представление игральной карты
     /// </summary>
-    class Card
+    public class Card
     {
         /// <summary>
         /// Кодировка номинала

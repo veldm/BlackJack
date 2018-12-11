@@ -9,7 +9,7 @@ namespace BlackJack
     /// <summary>
     /// Статический класс, содержащий "функцию BJ" и вспомогательные методы
     /// </summary>
-    static class MaxReward
+    public static class MaxReward
     {
         /// <summary>
         /// Награды для всех возможных исходов всех партий
@@ -61,6 +61,9 @@ namespace BlackJack
         /// <returns>Максимальная итоговая награда</returns>
         static public Double Testing(Chunk TestDeck, out string Way)
         {
+            P_Hand.Add(TestDeck.Pull(0));
+            P_Hand.Add(TestDeck.Pull(0));
+            D_Hand.Add(TestDeck.Pull(0));
             Play(TestDeck, false, false, 0, "");
             Double Result = Reward.Max();
             Way = WayToReward[Reward.IndexOf(Result)];

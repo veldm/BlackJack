@@ -9,7 +9,7 @@ namespace BlackJack
     /// <summary>
     /// Представление колоды игральных карт
     /// </summary>
-    class Chunk
+    public class Chunk
     {
         /// <summary>
         /// Сумма значений карт в колоде
