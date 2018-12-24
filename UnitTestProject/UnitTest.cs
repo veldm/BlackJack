@@ -48,5 +48,17 @@ namespace UnitTestProject
             Assert.AreEqual(eWay, Way);
             Assert.AreEqual(eResult, Result);
         }
+
+        [TestMethod]
+        public void TestMethod4()
+        {
+            string eWay = "SSSSHH";
+            double eResult = -1;
+            Chunk C = Chunk.Parse("10♣ 2♠ 10♣ 9♦ K♥ 4♥ 7♣ 9♥ K♥ A♠ 4♥ " +
+                "A♣ 5♠ 3♣ 7♦ 10♦ 6♣ 8♣ Q♥ Q♦ 10♣ 10♠ 5♥");
+            double Result = Testing(C, out string Way);
+            Assert.AreEqual(eWay, Way);
+            Assert.AreEqual(eResult, Result);
+        }
     }
 }
